@@ -1,2 +1,4 @@
 .sass-cache/
 node_modules/
+./accountAPIS/node_modules/
+./accountAPIS/config/database.js
