@@ -72,7 +72,9 @@ module.exports = function (passport) {
                                     return done(null, false, "token errror")
                                 }
                                 console.log(email, token)
-                                emailer.sendTokenMail(email, token, req, 'signup');
+                                emailer.sendTokenMail(email, token, req, 'signup')
+                                .then(res => console.log('emailer res>>>>>', res))
+                                .catch(err => console.log('emailer err>>>>', err));
                                 return done(null, newUser);
                             });
                         });
@@ -99,6 +101,7 @@ module.exports = function (passport) {
             User.findOne({ 'local.email': email }, function (err, user) {
                 if (err)
                     return done(err);
+                    
                 else if (!user)
                     return done(null, false, 'No user found.');
                 else if (!user.validPassword(password))
@@ -106,6 +109,7 @@ module.exports = function (passport) {
                 else if (!user.local.isVerified)
                     return done(null, false, 'User is not verified, Please check your email');
                 return done(null, user);
+                
 
             });
 

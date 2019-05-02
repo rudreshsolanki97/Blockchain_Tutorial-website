@@ -338,8 +338,8 @@ module.exports = function (app, passport) {
         redirect_urls: {
       // return_url: "http://www.blockdegree.org/suc",
         //  cancel_url: "http://www.blockdegree.org/err"
-          return_url: "http://localhost:3000/suc",
-          cancel_url: "http://localhost:3000/err"
+          return_url: "http://localhost:2000/suc",
+          cancel_url: "http://localhost:2000/err"
         },
         transactions: [
           {
