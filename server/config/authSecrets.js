@@ -15,7 +15,7 @@ module.exports = {
     'googleAuth': {
       'clientID': '698754492059-v4ist2ra5a43klek8patiesthmb20gqe.apps.googleusercontent.com',
       'clientSecret': 'CNyppdWZIF79bDX6o4W2PixS',
-      'callbackURL': '/auth/google/callback'
+      'callbackURL': 'https://uat.blockdegree.org/auth/google/callback'
     },
 
     // 'googleAuth': {
