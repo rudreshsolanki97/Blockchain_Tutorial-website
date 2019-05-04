@@ -41,7 +41,7 @@ var transporter = nodemailer.createTransport({
             to: mail,
             subject: 'Login',
          //text:'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/?token=' + token.token + '.\n'
-            text:'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps://www.blockdegree.org/confirmation\/?token=' + token.token + '.\n' + 'Free Blockchain Course with Online Certification.. This exam comprises of theory and practical Question, to be completed within 45 minutes. The minimum passing score of the exam is above 60%. Upon passing of the exam, you will be entitled to receive a certification of competence, which will be added to the Xinfin blockchain. With the certificate… ' + '.\n'
+            text:'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps://uat.blockdegree.org/confirmation\/?token=' + token.token + '.\n' + 'Free Blockchain Course with Online Certification.. This exam comprises of theory and practical Question, to be completed within 45 minutes. The minimum passing score of the exam is above 60%. Upon passing of the exam, you will be entitled to receive a certification of competence, which will be added to the Xinfin blockchain. With the certificate… ' + '.\n'
 
           };
         } else if (type === 'course_1' || type === 'course_2' || type === 'course_3') {
@@ -58,7 +58,7 @@ var transporter = nodemailer.createTransport({
             to: mail,
             subject: 'Payment Successfull',
             //text:'Hello,\n\n' + 'Your payment is completed for ' + courseName + ' : \nhttp:\/\/' + req.headers.host + '/' + courseName + '.\n'
-          text:'Hello,\n\n' + 'Your payment is completed for ' + courseName + ' : \nhttp://www.blockdegree.org/' + courseName + '.\n'
+          text:'Hello,\n\n' + 'Your payment is completed for ' + courseName + ' : \nhttp://uat.blockdegree.org/' + courseName + '.\n'
         };
       }
 
@@ -81,7 +81,7 @@ var transporter = nodemailer.createTransport({
     forgotPasswordMailer: function (mail,token,res) {
       console.log('mail', mail)
       return new Promise(function(resolve,reject){
-        var link = "http://localhost:2000/resetPassword?&email=" + token;
+        var link = "http://uat.blockdegree.org/resetPassword?&email=" + token;
 
         var mailOptions = {
           from: 'info@blockdegree.org',

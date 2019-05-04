@@ -122,8 +122,10 @@ module.exports = function (passport) {
             callbackURL: configAuth.githubAuth.callbackURL,
             scope: 'user:email'
           },
-          function (token, refreshToken, profile, done) {
-            console.log('GitHubStrategy',profile);
+          function (token, refreshToken, profile, done) 
+          
+          {
+            console.log('GitHubStrategy',profile, token);
             process.nextTick(function() {
                 User.findOne({
                     'local.email': profile.emails[0].value
@@ -170,18 +172,20 @@ module.exports = function (passport) {
         }));
 
 // Google Login
-    passport.use('google', new GoogleStrategy({
+    passport.use(new GoogleStrategy({
 
         clientID: configAuth.googleAuth.clientID,
         clientSecret: configAuth.googleAuth.clientSecret,
         callbackURL: configAuth.googleAuth.callbackURL,
     
         },
-        function (token, refreshToken, profile, done) {
-            console.log('googlestrategy',profile);
+        function (token, refreshToken, profile, done)
+
+         {
+            console.log('googlestrategy', profile.emails[0], token);
+
             process.nextTick(function() {
-                User.findOne({
-                    'local.email': profile.emails[0].value
+                User.findOne({'local.email': profile.emails[0].value
                 }, function(err, user) {
                     console.log('google callback', user, err);
                     if(user){
@@ -190,8 +194,9 @@ module.exports = function (passport) {
                         done(null, user);
                     } else {
                         var newUser = new User();
+                        // set all of the relevant information
                         newUser.local.email = profile.emails[0].value;
-                        newUser.local.password = newUser.generateHash(password);
+                        // newUser.local.password = newUser.generateHash(password);
                         newUser.local.payment.course_1 = false;
                         newUser.local.payment.course_2 = false;
                         newUser.local.payment.course_3 = false;
@@ -201,6 +206,7 @@ module.exports = function (passport) {
                         newUser.local.examAdvanced.marks = 0;
                         newUser.local.examProfessional.attempts = 0;
                         newUser.local.examProfessional.marks = 0;
+                        console.log('new user>>>>>>>>>>', newUser)
                         newUser.save(function (err) {
                             if (err) {
                                 console.log("Error:", err)
@@ -218,10 +224,11 @@ module.exports = function (passport) {
                             //     return done(null, newUser);
                             // });
                             return done(null, newUser);
-                        });
+                        });  
                     }
                 });
             });
         }));
 
-};
+}; 
+

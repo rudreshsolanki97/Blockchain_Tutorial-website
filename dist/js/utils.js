@@ -89,6 +89,8 @@ function submitForm(form) {
   })
 };
 
+
+
 $(document).ready(function () {
   if(window.location.href.indexOf("login") > -1) {
     if(localStorage.getItem('hasUser') === "true") {
