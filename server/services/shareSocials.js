@@ -40,7 +40,7 @@ exports.postTwitter = async (req, res) => {
     user.auth.twitter.tokenSecret == "" ||
     user.auth.twitter.tokenSecret == undefined
   ) {
-    return res.redirect("/auth/twitter");
+    return res.redirect("http://beta.blockdegree.org/auth/twitter");
   }
   const hash =
     req.body.hash ||
@@ -144,7 +144,7 @@ exports.postLinkedin = async (req, res) => {
     user.auth.linkedin.id == undefined
   ) {
     // set linkedin credentials and post.
-    return res.redirect("/auth/linkedin");
+    return res.redirect("http://beta.blockdegree.org/auth/linkedin");
   }
   const hash =
   req.body.hash ||
